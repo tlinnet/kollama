@@ -55,3 +55,6 @@ In `KNIME Analytics Platform` -> `Help` -> `About...` -> `Installation Details`:
 `src/main/python` copied to llm_5_4_3_v202503051153
 
 * Deleted `knime.p12`, `cyclonedx-linux-x64` ~60MB linux binary, `scripts` folder, `versions` folder
+
+Modified
+* `src/util`: Imported `main_category` from kollama

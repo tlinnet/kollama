@@ -6,6 +6,8 @@ import pyarrow as pa
 import pyarrow.compute as pc
 from dataclasses import dataclass
 
+from kollama.util import main_category, ai_icon
+
 
 def is_nominal(column: knext.Column) -> bool:
     # Filter nominal columns
@@ -14,17 +16,6 @@ def is_nominal(column: knext.Column) -> bool:
 
 def create_type_filer(ktype: knext.KnimeType) -> Callable[[knext.Column], bool]:
     return lambda c: c.ktype == ktype
-
-
-ai_icon = "icons/ml.png"
-
-main_category = knext.category(
-    path="/labs",
-    level_id="kai",
-    name="AI",
-    description="",
-    icon=ai_icon,
-)
 
 
 def check_canceled(ctx: knext.ExecutionContext) -> None:
