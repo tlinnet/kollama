@@ -39,3 +39,19 @@ python -m unittest discover tests
 # Or Test Single file / Class / Function
 python -m unittest tests.test_models_ollama
 ```
+
+## org.knime.python.llm code
+Code for the KNIME extension: [KNIME AI Extension](https://hub.knime.com/knime/extensions/org.knime.python.features.llm/latest)
+
+After installation of extension, the source code was found here.
+```cmd
+%AppData%/../Local/Programs/KNIME/plugins/org.knime.python.llm_5.4.3.v202503051153
+```
+
+In `KNIME Analytics Platform` -> `Help` -> `About...` -> `Installation Details`: Searching for `KNIME AI Extension`, class is `org.knime.python.features.llm.feature.group`
+
+### Changes
+
+`src/main/python` copied to llm_5_4_3_v202503051153
+
+* Deleted `knime.p12`, `cyclonedx-linux-x64` ~60MB linux binary, `scripts` folder, `versions` folder
