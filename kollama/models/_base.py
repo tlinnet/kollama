@@ -1,13 +1,13 @@
 import knime.extension as knext
 from kollama.base import AIPortObjectSpec
-from kollama.util import main_category
+from kollama.util import main_category, ai_icon
 
 model_category = knext.category(
     path=main_category,
     level_id="models",
     name="Models",
     description="",
-    icon="icons/ml.png",
+    icon=ai_icon,
 )
 
 class OutputFormatOptions(knext.EnumParameterOptions):

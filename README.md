@@ -1,5 +1,5 @@
 # kollama
-![kollama is a KNIME Ollama Extension](icons/ollama.png)
+![kollama is a KNIME Ollama Extension](icons/kollama.png)
 
 KNIME Ollama Extension, developed in Python.
 
@@ -58,3 +58,4 @@ In `KNIME Analytics Platform` -> `Help` -> `About...` -> `Installation Details`:
 
 Modified
 * `src/util`: Imported `main_category` from kollama
+* `icons`: Copied to `icons` in kollama
