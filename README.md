@@ -59,3 +59,5 @@ In `KNIME Analytics Platform` -> `Help` -> `About...` -> `Installation Details`:
 Modified
 * `src/util`: Imported `main_category` from kollama
 * `icons`: Copied to `icons` in kollama
+* `src/util/base`: `from kollama.models._base import model_category, ChatModelPortObject, ChatModelPortObjectSpec, LLMPortObject, LLMPortObjectSpec, EmbeddingsPortObject, EmbeddingsPortObjectSpec`
+  * Deleted corresponding classes. This has to be done, to let ports work together.

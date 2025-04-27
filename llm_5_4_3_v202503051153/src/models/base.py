@@ -7,14 +7,7 @@ from base import AIPortObjectSpec
 from typing import List, Callable, Optional, Type
 from functools import partial
 
-
-model_category = knext.category(
-    path=util.main_category,
-    level_id="models",
-    name="Models",
-    description="",
-    icon="icons/ml.png",
-)
+from kollama.models._base import model_category, ChatModelPortObject, ChatModelPortObjectSpec, LLMPortObject, LLMPortObjectSpec, EmbeddingsPortObject, EmbeddingsPortObjectSpec
 
 
 @knext.parameter_group(label="Model Parameters")
@@ -404,84 +397,12 @@ class CredentialsSettings:
         )
 
 
-class LLMPortObjectSpec(AIPortObjectSpec):
-    """Most generic spec of LLMs. Used to define the most generic LLM PortType"""
-
-    def __init__(
-        self,
-        n_requests: int = 1,
-    ) -> None:
-        super().__init__()
-        self._n_requests = n_requests
-
-    @property
-    def n_requests(self) -> int:
-        return self._n_requests
-
-    @property
-    def supported_output_formats(self) -> list[OutputFormatOptions]:
-        return [OutputFormatOptions.Text]
-
-
-class LLMPortObject(knext.PortObject):
-    def __init__(self, spec: LLMPortObjectSpec) -> None:
-        super().__init__(spec)
-
-    def serialize(self) -> bytes:
-        return b""
-
-    @classmethod
-    def deserialize(cls, spec: LLMPortObjectSpec, storage: bytes):
-        return cls(spec)
-
-    def create_model(self, ctx: knext.ExecutionContext):
-        raise NotImplementedError()
-
-
 llm_port_type = knext.port_type("LLM", LLMPortObject, LLMPortObjectSpec)
-
-
-class ChatModelPortObjectSpec(LLMPortObjectSpec):
-    """Most generic chat model spec. Used to define the most generic chat model PortType."""
-
-
-class ChatModelPortObject(LLMPortObject):
-    def __init__(self, spec: ChatModelPortObjectSpec) -> None:
-        super().__init__(spec)
-
-    def serialize(self):
-        return b""
-
-    @classmethod
-    def deserialize(cls, spec, data: dict):
-        return cls(spec)
-
-    def create_model(self, ctx: knext.ExecutionContext):
-        raise NotImplementedError()
 
 
 chat_model_port_type = knext.port_type(
     "Chat Model", ChatModelPortObject, ChatModelPortObjectSpec
 )
-
-
-class EmbeddingsPortObjectSpec(AIPortObjectSpec):
-    """Most generic embeddings model spec. Used to define the most generic embeddings model PortType."""
-
-
-class EmbeddingsPortObject(knext.PortObject):
-    def __init__(self, spec: EmbeddingsPortObjectSpec) -> None:
-        super().__init__(spec)
-
-    def serialize(self):
-        return b""
-
-    @classmethod
-    def deserialize(cls, spec, data: dict):
-        return cls(spec)
-
-    def create_model(self, ctx: knext.ExecutionContext):
-        raise NotImplementedError()
 
 
 embeddings_model_port_type = knext.port_type(
