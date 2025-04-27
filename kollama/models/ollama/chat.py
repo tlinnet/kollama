@@ -1,9 +1,9 @@
 import knime.extension as knext
-# These import has to be relative. When using "src.models.ollama" the nodes disappear in the KNIME GUI.
-from ._util import ollama_icon, ollama_category
-from .auth import ollama_auth_port_type
-from ._auth import OllamaAuthenticationPortObject, OllamaAuthenticationPortObjectSpec
-from ._chat import OllamaChatModelPortObject, OllamaChatModelPortObjectSpec
+
+from kollama.models.ollama._util import ollama_icon, ollama_category
+from kollama.models.ollama.auth import ollama_auth_port_type
+from kollama.models.ollama._auth import OllamaAuthenticationPortObject, OllamaAuthenticationPortObjectSpec
+from kollama.models.ollama._chat import OllamaChatModelPortObject, OllamaChatModelPortObjectSpec
 
 
 ollama_chat_model_port_type = knext.port_type(

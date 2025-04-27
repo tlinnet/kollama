@@ -1,7 +1,8 @@
 from ollama import Client
 from ollama._types import ListResponse
 import knime.extension as knext
-from .._base import model_category
+
+from kollama.models._base import model_category
 
 ollama_icon = "icons/ollama.png"
 ollama_category = knext.category(

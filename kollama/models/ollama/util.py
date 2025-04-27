@@ -3,11 +3,11 @@ import pyarrow as pa
 import pandas as pd
 import json
 
-from ._util import ollama_icon, ollama_category
-from .auth import ollama_auth_port_type
-from ._auth import OllamaAuthenticationPortObject, OllamaAuthenticationPortObjectSpec
-from ._util import OllamaUtil
-from util import create_empty_table, OutputColumn
+from kollama.models.ollama._util import ollama_icon, ollama_category
+from kollama.models.ollama.auth import ollama_auth_port_type
+from kollama.models.ollama._auth import OllamaAuthenticationPortObject, OllamaAuthenticationPortObjectSpec
+from kollama.models.ollama._util import OllamaUtil
+from kollama.util import create_empty_table, OutputColumn
 
 
 @knext.parameter_group("Model types")

@@ -1,6 +1,7 @@
 import knime.extension as knext
+
 from kollama.base import AIPortObjectSpec
-from ._util import OllamaUtil
+from kollama.models.ollama._util import OllamaUtil
 
 _default_ollama_api_base = "http://localhost:11434"
 _default_ollama_timeout = 5

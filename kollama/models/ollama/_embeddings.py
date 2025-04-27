@@ -1,8 +1,8 @@
 import knime.extension as knext
-# These import has to be relative. When using "src.models.x" the nodes disappear in the KNIME GUI.
-from .._base import EmbeddingsPortObjectSpec, EmbeddingsPortObject
-from ._auth import OllamaAuthenticationPortObjectSpec
-from ._embeddings_model import OllamaEmbeddings
+
+from kollama.models._base import EmbeddingsPortObjectSpec, EmbeddingsPortObject
+from kollama.models.ollama._auth import OllamaAuthenticationPortObjectSpec
+from kollama.models.ollama._embeddings_model import OllamaEmbeddings
 
 
 class OllamaEmbeddingsPortObjectSpec(EmbeddingsPortObjectSpec):

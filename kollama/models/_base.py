@@ -1,9 +1,9 @@
 import knime.extension as knext
 from kollama.base import AIPortObjectSpec
-from kollama import util
+from kollama.util import main_category
 
 model_category = knext.category(
-    path=util.main_category,
+    path=main_category,
     level_id="models",
     name="Models",
     description="",

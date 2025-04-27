@@ -1,8 +1,8 @@
 import knime.extension as knext
 from langchain_ollama import ChatOllama
-# These import has to be relative. When using "src.models.x" the nodes disappear in the KNIME GUI.
-from .._base import ChatModelPortObject, ChatModelPortObjectSpec, OutputFormatOptions
-from ._auth import OllamaAuthenticationPortObjectSpec
+
+from kollama.models._base import ChatModelPortObject, ChatModelPortObjectSpec, OutputFormatOptions
+from kollama.models.ollama._auth import OllamaAuthenticationPortObjectSpec
 
 
 class OllamaChatModelPortObjectSpec(ChatModelPortObjectSpec):

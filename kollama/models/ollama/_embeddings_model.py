@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import List
 from langchain_core.embeddings import Embeddings
 from ollama import Client
 from ollama._types import EmbedResponse
