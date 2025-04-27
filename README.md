@@ -1,0 +1,2 @@
+# kollama
+KNIME Ollama Extension
