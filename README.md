@@ -1,4 +1,6 @@
 # kollama
+![kollama is a KNIME Ollama Extension](icons/ollama.png)
+
 KNIME Ollama Extension, developed in Python.
 
 Developed as described here 

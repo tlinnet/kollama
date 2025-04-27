@@ -5,13 +5,13 @@ import pyarrow as pa
 import re
 
 
-ai_icon = "icons/ml.png"
+ai_icon = "icons/ollama.png"
 main_category = knext.category(
     path="/community",
-    level_id="kai",
-    name="AI Tutorial Development",
+    level_id="kollama",
+    name="Kollama",
     description="",
-    icon=ai_icon,
+    icon="icons/ollama.png",
 )
 
 

@@ -38,7 +38,7 @@ class ModelTypeSettings:
     port_type=ollama_auth_port_type,
 )
 @knext.output_table(
-    name="Ollama AI Model list",
+    name="Ollama list of models",
     description="The list of models, including their name, type and description.",
 )
 class OllamaModelLister:
