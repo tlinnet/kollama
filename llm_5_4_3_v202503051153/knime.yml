@@ -1,0 +1,18 @@
+name: llm
+author: Alexander Jauch-Walser, Seray Arslan, Adrian Nembach
+env_yml_path: env.yml
+extension_module: src/knime_llm
+description: KNIME AI Extension
+long_description:
+  This KNIME extension provides nodes for connecting to and prompting large language models (LLMs),
+
+  chat and embeddings models provided by OpenAI, Hugging Face Hub and GPT4ALL.
+
+  There are also nodes for building and querying the vector stores Chroma and FAISS, as well as nodes for combining
+
+  multiple vector stores and LLMs into agents that can dynamically decide which vector store to query for information given the
+  user prompt.
+group_id: org.knime.python
+version: 5.4.3
+vendor: KNIME AG, Zurich, Switzerland
+license_file: LICENSE.txt
