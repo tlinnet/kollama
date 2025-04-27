@@ -1,7 +1,7 @@
 name: kollama
 author: Troels Schwarz-Linnet
 env_yml_path: env.yml
-extension_module: kollama/knime_ollama
+extension_module: knime_kollama
 description: KNIME Ollama Extension
 long_description:
   This KNIME Ollama extension provides nodes for connecting to and prompting large language models (LLMs),
