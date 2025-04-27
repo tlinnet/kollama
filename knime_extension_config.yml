@@ -1,0 +1,4 @@
+com.github.tlinnet.kollama: # {group_id}.{name} from the knime.yml
+  src: C:/KNIME/kollama # Path to folder containing the knime.yml extension file
+  conda_env_path: C:/Users/tesc/AppData/Local/miniforge3/envs/kollama
+  debug_mode: false # Optional line, if set to true, it will always use the latest changes of execute/configure, when that method is used within the KNIME Analytics Platform

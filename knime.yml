@@ -1,0 +1,17 @@
+name: kollama
+author: Troels Schwarz-Linnet
+env_yml_path: env.yml
+extension_module: kollama/knime_ollama
+description: KNIME Ollama Extension
+long_description:
+  This KNIME Ollama extension provides nodes for connecting to and prompting large language models (LLMs),
+
+  chat and embeddings models provided by Ollama. 
+  
+  Since the "KNIME AI Extension" LLM ports not yet are KNIME core PortTypes, the "KNIME AI Extension" is bundled with this extension.
+
+  If LLM ports will become KNIME core PortTypes, this extension will only feature Ollama nodes.
+group_id: com.github.tlinnet
+version: 1.0.0
+vendor: KNIME Community Extensions
+license_file: LICENSE.txt
