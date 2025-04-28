@@ -100,7 +100,7 @@ class OllamaModelLister:
         return create_empty_table(None, self.column_list)
 
 
-@knext.parameter_group(label="List Ollama model process status",)
+@knext.parameter_group(label="List Ollama process status",)
 class ProcessStatusInfo:
     pass
 
@@ -118,7 +118,7 @@ class ProcessStatusInfo:
 )
 @knext.output_table(
     name="Ollama list of processes",
-    description="The list of models, including their name, type and description.",
+    description="The list of running models, including their name, type and description.",
 )
 class OllamaModelProcessStatus:
     """
