@@ -1,5 +1,5 @@
 from ollama import Client
-from ollama._types import ListResponse, ProcessResponse
+from ollama._types import ListResponse, ProcessResponse, ShowResponse
 import knime.extension as knext
 
 from kollama.models._base import model_category
@@ -46,7 +46,7 @@ class OllamaUtil():
         ollama_list = self.ollama.list()
         return ollama_list
 
-    def ollama_show(self, model: str) -> ListResponse:
+    def ollama_show(self, model: str) -> ShowResponse:
         ollama_show = self.ollama.show(model=model)
         return ollama_show
 
