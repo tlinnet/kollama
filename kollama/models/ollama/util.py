@@ -100,6 +100,10 @@ class OllamaModelLister:
         return create_empty_table(None, self.column_list)
 
 
+@knext.parameter_group(label="List Ollama model process status",)
+class ProcessStatusInfo:
+    pass
+
 @knext.node(
     name="Ollama Ps",
     node_type=knext.NodeType.SOURCE,
@@ -113,7 +117,7 @@ class OllamaModelLister:
     port_type=ollama_auth_port_type,
 )
 @knext.output_table(
-    name="Ollama list of Processes",
+    name="Ollama list of processes",
     description="The list of models, including their name, type and description.",
 )
 class OllamaModelProcessStatus:
@@ -125,6 +129,8 @@ class OllamaModelProcessStatus:
 
     Use this node to retrieve the process status of loaded models with their name, type and description.
     """
+
+    psinfo = ProcessStatusInfo()
 
     # Name, KNIME type, and PyArrow type of the columns to output
     column_list = [
