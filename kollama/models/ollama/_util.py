@@ -1,5 +1,5 @@
 from ollama import Client
-from ollama._types import ListResponse
+from ollama._types import ListResponse, ProcessResponse, ShowResponse
 import knime.extension as knext
 
 from kollama.models._base import model_category
@@ -46,11 +46,11 @@ class OllamaUtil():
         ollama_list = self.ollama.list()
         return ollama_list
 
-    def ollama_show(self, model: str) -> ListResponse:
+    def ollama_show(self, model: str) -> ShowResponse:
         ollama_show = self.ollama.show(model=model)
         return ollama_show
 
-    def ollama_list_models(self, mode: str | None = None, verbose: bool = False) -> list[str]:
+    def ollama_list_models(self, mode: str | None = None, verbose: bool = False) -> dict:
         models = {}
         ollama_list = self.ollama_list().models
         for model in ollama_list:
@@ -79,4 +79,21 @@ class OllamaUtil():
                     elif 'embedding_length' in mi:
                         models[model]['embedding_length'] = ollama_show.modelinfo.get(mi)
 
+        return models
+
+    def ollama_ps(self) -> ProcessResponse:
+        return self.ollama.ps()
+
+    def ollama_ps_models(self) -> dict:
+        models = {}
+        ollama_ps = self.ollama_ps().models
+        for model in ollama_ps:
+            model_type = 'other'
+            if model.details.quantization_level.startswith("Q"):
+                model_type = 'chat'
+            elif model.details.quantization_level.startswith("F"):
+                model_type = 'embedding'
+
+            d = {'type':model_type, 'expires_at': model.expires_at.replace(microsecond=0).isoformat(), 'size':sizeof_fmt(model.size), 'size_vram':sizeof_fmt(model.size_vram), 'quantization_level':model.details.quantization_level, 'family':model.details.family, 'parameter_size=' :model.details.parameter_size}
+            models[model.model] = d
         return models
