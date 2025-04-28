@@ -193,7 +193,7 @@ class TestOllamaUtil(unittest.TestCase):
         models = self.util.ollama_list_models(verbose=False)
         assert isinstance(models, dict)
         assert len(models) == 4
-        set(models.keys()) == set( ['gemma3:12b', 'qwen2.5-coder:32b', 'mxbai-embed-large:latest','nomic-embed-text:latest'])
+        assert set(models.keys()) == set( ['gemma3:12b', 'qwen2.5-coder:32b', 'mxbai-embed-large:latest','nomic-embed-text:latest'])
 
     @patch.object(OllamaUtil, 'ollama_list', fake_ollama_list)
     def test_ollama_list_models_chat(self):
@@ -209,3 +209,12 @@ class TestOllamaUtil(unittest.TestCase):
         ollama_ps = self.util.ollama_ps()
         assert isinstance(ollama_ps, ProcessResponse)
         assert len(ollama_ps.models) == 2
+
+    @patch.object(OllamaUtil, 'ollama_ps', fake_ollama_ps)
+    def test_ollama_ps_model(self):
+        # Call the method
+        models = self.util.ollama_ps_model()
+        print(models)
+        assert isinstance(models, dict)
+        assert len(models) == 2
+        assert set(models.keys()) == set( ['nomic-embed-text:latest', 'gemma3:12b'])

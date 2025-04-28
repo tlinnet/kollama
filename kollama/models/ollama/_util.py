@@ -83,3 +83,17 @@ class OllamaUtil():
 
     def ollama_ps(self) -> ProcessResponse:
         return self.ollama.ps()
+
+    def ollama_ps_model(self) -> dict:
+        models = {}
+        ollama_ps = self.ollama_ps().models
+        for model in ollama_ps:
+            model_type = 'other'
+            if model.details.quantization_level.startswith("Q"):
+                model_type = 'chat'
+            elif model.details.quantization_level.startswith("F"):
+                model_type = 'embedding'
+
+            d = {'type':model_type, 'expires_at': model.expires_at.replace(microsecond=0).isoformat(), 'size':sizeof_fmt(model.size), 'size_vram':sizeof_fmt(model.size_vram), 'quantization_level':model.details.quantization_level, 'family':model.details.family, 'parameter_size=' :model.details.parameter_size}
+            models[model.model] = d
+        return models
