@@ -5,9 +5,8 @@ KNIME Ollama Extension, developed in Python. Introducing embedding node.
 
 ![image](https://github.com/user-attachments/assets/73edc4cb-fb99-480f-87bb-9d6232510c96)
 
-Developed as described here 
-* [4 steps for your Python Team to develop KNIME nodes](https://www.knime.com/blog/4-steps-for-your-python-team-to-develop-knime-nodes)
-* [Create a New Python based KNIME Extension](https://docs.knime.com/latest/pure_python_node_extensions_guide).
+Since the "KNIME AI Extension" LLM ports is not KNIME core PortTypes, the "KNIME AI Extension" is bundled with this extension.
+If LLM ports will become KNIME core PortTypes, this extension will only feature Ollama nodes.
 
 # Install Kollama - KNIME Ollama Extension
 
@@ -23,6 +22,10 @@ Unzip `kollama.zip` to for example `C:/KNIME/local-extensions/kollama/`. Then ad
   * Search for: `KNIME Ollama`
 
 # Development
+
+Developed as described here 
+* [4 steps for your Python Team to develop KNIME nodes](https://www.knime.com/blog/4-steps-for-your-python-team-to-develop-knime-nodes)
+* [Create a New Python based KNIME Extension](https://docs.knime.com/latest/pure_python_node_extensions_guide).
 
 ## Preparation
 * [Install miniforge](https://github.com/conda-forge/miniforge?tab=readme-ov-file#install) for conda environment handling
