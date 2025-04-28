@@ -28,6 +28,7 @@ mock_models_showresponse = ShowResponse(
 )
 
 mock_models_psresponse = ProcessResponse(models=[
+    ProcessResponse.Model(model='nomic-embed-text:latest', name='nomic-embed-text:latest', digest='0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f', expires_at=datetime.datetime(2025, 4, 28, 12, 36, 46), size=849202176, size_vram=849202176, details=ModelDetails(parent_model='', format='gguf', family='nomic-bert', families=['nomic-bert'], parameter_size='137M', quantization_level='F16')), 
     ProcessResponse.Model(model='gemma3:12b', name='gemma3:12b', digest='6fd036cefda5093cc827b6c16be5e447f23857d4a472ce0bdba0720573d4dcd9', expires_at=datetime.datetime(2025, 4, 28, 12, 36, 46), size=24564058048, size_vram=24564058048, details=ModelDetails(parent_model='', format='gguf', family='gemma3', families=['gemma3'], parameter_size='12.2B', quantization_level='Q4_K_M')), 
 ])
 
@@ -207,4 +208,4 @@ class TestOllamaUtil(unittest.TestCase):
         # Call the method
         ollama_ps = self.util.ollama_ps()
         assert isinstance(ollama_ps, ProcessResponse)
-        assert len(ollama_ps.models) == 1
+        assert len(ollama_ps.models) == 2
