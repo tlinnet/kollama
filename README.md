@@ -1,11 +1,28 @@
-# kollama
+# Kollama
 ![kollama is a KNIME Ollama Extension](icons/kollama.png)
 
-KNIME Ollama Extension, developed in Python.
+KNIME Ollama Extension, developed in Python. Introducing embedding node.
+
+![image](https://github.com/user-attachments/assets/73edc4cb-fb99-480f-87bb-9d6232510c96)
 
 Developed as described here 
 * [4 steps for your Python Team to develop KNIME nodes](https://www.knime.com/blog/4-steps-for-your-python-team-to-develop-knime-nodes)
 * [Create a New Python based KNIME Extension](https://docs.knime.com/latest/pure_python_node_extensions_guide).
+
+# Install Kollama - KNIME Ollama Extension
+
+`Kollama` extension has been requesed to be published via [KNIME Community Hub](https://docs.knime.com/latest/pure_python_node_extensions_guide/#extension-bundling).
+
+Until available in KNIME Community Hub, `Kollama` can be installed by downloading the zipped local KNIME Update site from [Kollama releases](https://github.com/tlinnet/kollama/releases).
+
+Unzip `kollama.zip` to for example `C:/KNIME/local-extensions/kollama/`. Then add folder as a KNIME Update Site and install.
+
+* Add Software Site in File -> Preferences -> Install/Update -> Available Software Sites
+  * Name: `Kollama`, Location: file:/C:/KNIME/local-extensions/kollama/
+* Install it via File -> Install KNIME Extensions
+  * Search for: `KNIME Ollama`
+
+# Development
 
 ## Preparation
 * [Install miniforge](https://github.com/conda-forge/miniforge?tab=readme-ov-file#install) for conda environment handling
