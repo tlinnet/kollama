@@ -12,6 +12,6 @@ long_description:
 
   If LLM ports will become KNIME core PortTypes, this extension will only feature Ollama nodes.
 group_id: com.github.tlinnet
-version: 1.0.0
+version: 1.1.0
 vendor: KNIME Community Extensions
 license_file: LICENSE.txt
