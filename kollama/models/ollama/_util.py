@@ -50,7 +50,7 @@ class OllamaUtil():
         ollama_show = self.ollama.show(model=model)
         return ollama_show
 
-    def ollama_list_models(self, mode: str | None = None, verbose: bool = False) -> list[str]:
+    def ollama_list_models(self, mode: str | None = None, verbose: bool = False) -> dict:
         models = {}
         ollama_list = self.ollama_list().models
         for model in ollama_list:
