@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import MagicMock, patch
-from ollama._types import EmbedResponse, ListResponse, ModelDetails, ResponseError
+from ollama._types import EmbedResponse, ListResponse, ModelDetails, ProcessResponse, ResponseError
 import datetime
 
 from kollama.models.ollama._auth import OllamaAuthenticationPortObjectSpec
@@ -16,6 +16,11 @@ mock_models_listresponse = ListResponse(models=[
     ListResponse.Model(model='nomic-embed-text:latest', modified_at=datetime.datetime(2025, 1, 27), digest='0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f', size=274302450, details=ModelDetails(parent_model='', format='gguf', family='nomic-bert', families=['nomic-bert'], parameter_size='137M', quantization_level='F16'))
 ])
 mock_models.list.return_value = mock_models_listresponse
+
+mock_models_psresponse = ProcessResponse(models=[
+    ProcessResponse.Model(model='gemma3:12b', name='gemma3:12b', digest='6fd036cefda5093cc827b6c16be5e447f23857d4a472ce0bdba0720573d4dcd9', expires_at=datetime.datetime(2025, 4, 28, 12, 36, 46), size=24564058048, size_vram=24564058048, details=ModelDetails(parent_model='', format='gguf', family='gemma3', families=['gemma3'], parameter_size='12.2B', quantization_level='Q4_K_M')), 
+])
+
 
 class TestOllamaAuth(unittest.TestCase):
     def setUp(self):
@@ -151,6 +156,9 @@ class TestOllamaUtil(unittest.TestCase):
     def fake_ollama_list(self):
         return mock_models_listresponse
 
+    def fake_ollama_ps(self):
+        return mock_models_psresponse
+
     @patch.object(OllamaUtil, 'ollama_list', fake_ollama_list)
     def test_ollama_list(self):
         # Call the method
@@ -173,3 +181,10 @@ class TestOllamaUtil(unittest.TestCase):
         assert isinstance(models, dict)
         assert len(models) == 2
         assert set(models.keys()) == set(['gemma3:12b', 'qwen2.5-coder:32b'])
+
+    @patch.object(OllamaUtil, 'ollama_ps', fake_ollama_ps)
+    def test_ollama_ps(self):
+        # Call the method
+        ollama_ps = self.util.ollama_ps()
+        assert isinstance(ollama_ps, ProcessResponse)
+        assert len(ollama_ps.models) == 1

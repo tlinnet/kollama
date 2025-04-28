@@ -1,5 +1,5 @@
 from ollama import Client
-from ollama._types import ListResponse
+from ollama._types import ListResponse, ProcessResponse
 import knime.extension as knext
 
 from kollama.models._base import model_category
@@ -80,3 +80,6 @@ class OllamaUtil():
                         models[model]['embedding_length'] = ollama_show.modelinfo.get(mi)
 
         return models
+
+    def ollama_ps(self) -> ProcessResponse:
+        return self.ollama.ps()
