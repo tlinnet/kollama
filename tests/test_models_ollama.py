@@ -211,10 +211,9 @@ class TestOllamaUtil(unittest.TestCase):
         assert len(ollama_ps.models) == 2
 
     @patch.object(OllamaUtil, 'ollama_ps', fake_ollama_ps)
-    def test_ollama_ps_model(self):
+    def test_ollama_ps_models(self):
         # Call the method
-        models = self.util.ollama_ps_model()
-        print(models)
+        models = self.util.ollama_ps_models()
         assert isinstance(models, dict)
         assert len(models) == 2
         assert set(models.keys()) == set( ['nomic-embed-text:latest', 'gemma3:12b'])

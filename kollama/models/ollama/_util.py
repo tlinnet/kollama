@@ -84,7 +84,7 @@ class OllamaUtil():
     def ollama_ps(self) -> ProcessResponse:
         return self.ollama.ps()
 
-    def ollama_ps_model(self) -> dict:
+    def ollama_ps_models(self) -> dict:
         models = {}
         ollama_ps = self.ollama_ps().models
         for model in ollama_ps:

@@ -98,3 +98,71 @@ class OllamaModelLister:
         """Constructs an empty KNIME Table with the correct output columns."""
 
         return create_empty_table(None, self.column_list)
+
+
+@knext.node(
+    name="Ollama Ps",
+    node_type=knext.NodeType.SOURCE,
+    icon_path=ollama_icon,
+    category=ollama_category,
+    keywords=["Process Status", "Ollama"],
+)
+@knext.input_port(
+    name="Ollama Authentication",
+    description="The authentication for the Ollama API.",
+    port_type=ollama_auth_port_type,
+)
+@knext.output_table(
+    name="Ollama list of Processes",
+    description="The list of models, including their name, type and description.",
+)
+class OllamaModelProcessStatus:
+    """
+    Lists process status of loaded models in Ollama.
+
+    Lists process status of loaded models in Ollama using the
+    authentication provided via the input port.
+
+    Use this node to retrieve the process status of loaded models with their name, type and description.
+    """
+
+    # Name, KNIME type, and PyArrow type of the columns to output
+    column_list = [
+        OutputColumn("Name", knext.string(), pa.string()),
+        OutputColumn("Type", knext.string(), pa.string()),
+        OutputColumn("Description", knext.string(), pa.string()),
+    ]
+
+    def configure(self,
+        ctx: knext.ConfigurationContext,
+        auth: OllamaAuthenticationPortObjectSpec,
+    ) -> knext.Schema:
+        auth.validate_context(ctx)
+        knime_columns = [column.to_knime_column() for column in self.column_list]
+        return knext.Schema.from_columns(knime_columns)
+
+    def execute(self, 
+        ctx: knext.ExecutionContext, 
+        auth: OllamaAuthenticationPortObject
+    ) -> knext.Table:
+        returned_models = []
+        util = OllamaUtil(base_url=auth.spec.base_url, timeout=auth.spec.timeout)
+
+        loaded_models = util.ollama_ps_models()
+
+        for model in loaded_models:
+            returned_models.append([model, loaded_models[model]["type"], json.dumps(loaded_models[model])])
+
+        if not returned_models:
+            return self._create_empty_table()
+
+        models_df = pd.DataFrame(
+            returned_models, columns=["Name", "Type", "Description"]
+        )
+
+        return knext.Table.from_pandas(models_df)
+
+    def _create_empty_table(self) -> knext.Table:
+        """Constructs an empty KNIME Table with the correct output columns."""
+
+        return create_empty_table(None, self.column_list)
